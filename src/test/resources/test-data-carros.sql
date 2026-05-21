@@ -1,3 +1,4 @@
+DELETE FROM carro;
 INSERT INTO carro (id, modelo, ano, preco) VALUES (1, 'Civic1', 2015, 15000.0);
 INSERT INTO carro (id, modelo, ano, preco) VALUES (2, 'Civic2', 2016, 16000.0);
 INSERT INTO carro (id, modelo, ano, preco) VALUES (3, 'Civic3', 2017, 17000.0);
