@@ -1,6 +1,7 @@
 package br.org.edu.ifrn.LojaCarro.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Carro {
@@ -8,8 +9,19 @@ public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Modelo é obrigatório")
+    @Size(min = 1, max = 255, message = "Modelo deve ter entre 1 e 255 caracteres")
+    @Pattern(regexp = "^[a-zA-Z0-9\\s\\-áéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ()]*$", message = "Modelo contém caracteres inválidos")
     String modelo;
+
+    @NotNull(message = "Ano é obrigatório")
+    @Min(value = 1900, message = "Ano deve ser no mínimo 1900")
+    @Max(value = 2100, message = "Ano deve ser no máximo 2100")
     int ano;
+
+    @NotNull(message = "Preço é obrigatório")
+    @PositiveOrZero(message = "Preço deve ser positivo")
     double preco;
 
     // No-arg constructor necessário para desserialização (Jackson)
